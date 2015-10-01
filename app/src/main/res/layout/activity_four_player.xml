@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.dzhang4.dzhang4_gamebuzzer.four_playerActivity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="250dp"
+            android:text="Player 2"
+            android:id="@+id/Player24"
+            android:layout_row="4"
+            android:layout_column="15"
+            android:onClick="P24"/>
+
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="250dp"
+            android:text="Player 1"
+            android:id="@+id/Player14"
+            android:layout_row="4"
+            android:layout_column="14"
+            android:singleLine="false"
+            android:onClick="P14"/>
+
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="250dp"
+            android:text="Player 3"
+            android:id="@+id/Player34"
+            android:layout_row="5"
+            android:layout_column="14"
+            android:onClick="P34"/>
+
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="250dp"
+            android:text="Player 4"
+            android:id="@+id/Player44"
+            android:layout_row="5"
+            android:layout_column="15"
+            android:onClick="P44"/>
+    </GridLayout>
+
+</RelativeLayout>

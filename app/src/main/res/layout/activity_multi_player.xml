@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.dzhang4.dzhang4_gamebuzzer.multi_playerActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MultiTitle"
+        android:id="@+id/multiTitle"
+        android:textSize="@dimen/abc_action_button_min_width_overflow_material" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/twoPlayer"
+        android:id="@+id/TwoPlayer"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="104dp"
+        android:textSize="@dimen/abc_action_bar_default_height_material"
+        android:onClick="twoPlayer"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/threePlayer"
+        android:id="@+id/ThreePlayer"
+        android:layout_below="@+id/TwoPlayer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:textSize="@dimen/abc_action_bar_default_height_material"
+        android:onClick="threePlayer"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fourPlayer"
+        android:id="@+id/FourPlayer"
+        android:layout_marginTop="44dp"
+        android:textSize="@dimen/abc_action_bar_default_height_material"
+        android:layout_below="@+id/ThreePlayer"
+        android:layout_centerHorizontal="true"
+        android:onClick="fourPlayer"/>
+
+</RelativeLayout>
