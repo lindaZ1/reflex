@@ -12,12 +12,31 @@ import java.util.ArrayList;
 /**
  * Created by dzhang4 on 9/29/15.
  */
-public class MyAdapter extends ArrayAdapter<keyStatsSingle> {
+
+/*
+    Copyright (C) <2014>  <liwen Chen>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    https://github.com/liwenCHEN20/todu/blob/master/src/com/example/todolist/MyAdapter.java
+    sept 20,2015*/
+public class MyAdapter extends ArrayAdapter<keyStats> {
     private Context context;
-    private ArrayList<keyStatsSingle> itemsArray;
+    private ArrayList<keyStats> itemsArray;
 
     public MyAdapter(Context context, int resource,
-                     ArrayList<keyStatsSingle> objects) {
+                     ArrayList<keyStats> objects) {
         super(context, resource, objects);
         this.context = context;
         this.itemsArray = objects;

@@ -22,7 +22,7 @@
             android:id="@+id/Player1"
             android:layout_row="44"
             android:layout_column="38"
-            android:onClick="P1"/>
+            android:onClick="player1of2Click"/>
 
         <Button
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:id="@+id/Player2"
             android:layout_row="90"
             android:layout_column="38"
-            android:onClick="P2"/>
+            android:onClick="player2of2Click"/>
 
     </GridLayout>
 

@@ -1,5 +1,6 @@
 package com.example.dzhang4.dzhang4_gamebuzzer;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,11 +12,14 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-public class multi_playerActivity extends MainActivity{
+//multiPlayer screen with 2player, 3player, 4player buttons
+//determines first click and output result
+public class multi_playerActivity extends Activity {
 
-    ArrayList first=new ArrayList();
-    convert calc=new convert();
-    int count;
+    protected ArrayList first=new ArrayList();
+    protected int count;
+    public globalClass globalVar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,11 @@ public class multi_playerActivity extends MainActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    //define globalClass globalVar
+    public globalClass variable() {
+        final globalClass globalVar=(globalClass) this.getApplicationContext();
+        return globalVar;
+    }
     //open 2-player mode
     public void twoPlayer(View view) {
         Intent intent=new Intent(this, two_playerActivity.class);
@@ -63,10 +72,13 @@ public class multi_playerActivity extends MainActivity{
         startActivity(intent);
     }
 
-    //show result and clear array
+    //show result in alertDialog and clear array
     public void result(String player) {
-        //calc.calculate();
-        calculate();
+        //calculate and save count in file
+        convert calc=new convert();
+        calc.calculate(multi_playerActivity.this);
+
+        //show result
         AlertDialog.Builder earlyClick=new AlertDialog.Builder(this);
         earlyClick.setTitle("Result");
         earlyClick.setMessage(player+" clicked first");
@@ -79,10 +91,5 @@ public class multi_playerActivity extends MainActivity{
         EarlyClick.show();
     }
 
-
-    //method to check if first is empty
-    private boolean arrEmpty() {
-        return first.isEmpty();
-    }
 
 }

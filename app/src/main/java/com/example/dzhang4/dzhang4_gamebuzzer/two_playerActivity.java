@@ -1,14 +1,9 @@
 package com.example.dzhang4.dzhang4_gamebuzzer;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import java.util.ArrayList;
 
 public class two_playerActivity extends multi_playerActivity {
 
@@ -16,6 +11,7 @@ public class two_playerActivity extends multi_playerActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_two_player);
+
     }
 
     @Override
@@ -42,10 +38,10 @@ public class two_playerActivity extends multi_playerActivity {
 
     //whoever clicked first will access result method
     //player1 clicks button
-    public void P1(View view) {
+    public void player1of2Click(View view) {
         first.add(1);
         if (first.get(0) == 1) {
-            final globalClass globalVar=(globalClass) getApplicationContext();
+            globalVar= variable();
             count=globalVar.getp12Count();
             globalVar.setP12Count(count+1);
             result("Player1");
@@ -53,10 +49,10 @@ public class two_playerActivity extends multi_playerActivity {
     }
 
     //player2 clicks button
-    public void P2(View view) {
+    public void player2of2Click(View view) {
         first.add(2);
         if (first.get(0) == 2) {
-            final globalClass globalVar=(globalClass) getApplicationContext();
+            globalVar= variable();
             count=globalVar.getp22Count();
             globalVar.setP22Count(count + 1);
             result("Player2");

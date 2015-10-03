@@ -1,14 +1,9 @@
 package com.example.dzhang4.dzhang4_gamebuzzer;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import java.util.ArrayList;
 
 public class three_playerActivity extends multi_playerActivity {
 
@@ -40,12 +35,16 @@ public class three_playerActivity extends multi_playerActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //whoever clicked first will access result method
+    /*players who tap their button will append their player number to first(ArrayList) in superclass
+   *first[0] is the first player to tap
+   *this player will ArrayAt one point and access the result method in superclass*/
+
     //player1 clicks button
-    public void P13(View view) {
+    public void player1of3Click(View view) {
         first.add(1);
         if (first.get(0)==1) {
-            final globalClass globalVar=(globalClass) getApplicationContext();
+            //final globalClass globalVar=(globalClass) getApplicationContext();
+            globalVar= variable();
             count=globalVar.getp13Count();
             globalVar.setP13Count(count + 1);
             result("Player1");
@@ -53,10 +52,11 @@ public class three_playerActivity extends multi_playerActivity {
     }
 
     //player2 clicks button
-    public void P23(View view) {
+    public void player2of3Click(View view) {
         first.add(2);
         if (first.get(0)==2) {
-            final globalClass globalVar=(globalClass) getApplicationContext();
+            //final globalClass globalVar=(globalClass) getApplicationContext();
+            globalVar= variable();
             count=globalVar.getp23Count();
             globalVar.setP23Count(count + 1);
             result("Player2");
@@ -65,10 +65,11 @@ public class three_playerActivity extends multi_playerActivity {
     }
 
     //player3 clicks button
-    public void P33(View view) {
+    public void player3of3Click(View view) {
         first.add(3);
         if (first.get(0)==3) {
-            final globalClass globalVar=(globalClass) getApplicationContext();
+            //final globalClass globalVar=(globalClass) getApplicationContext();
+            globalVar= variable();
             count=globalVar.getp33Count();
             globalVar.setP33Count(count+1);
             result("Player3");

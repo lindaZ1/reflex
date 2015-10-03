@@ -1,41 +1,20 @@
 package com.example.dzhang4.dzhang4_gamebuzzer;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-
-public class statsActivity extends MainActivity {
-    protected static final String FILENAME = "file.sav";
-
-    protected keyStatsSingleArray data=new keyStatsSingleArray();
+public class statsActivity extends Activity {
+    protected saveLoad save=new saveLoad();
+    protected keyStatsArray data=new keyStatsArray();
     private ListView StatListView;
-    //public ArrayAdapter<keyStatsSingle> adapter;
     private MyAdapter adapter;
 
     @Override
@@ -47,11 +26,8 @@ public class statsActivity extends MainActivity {
     }
 
     public void clear(View view) {
-        //setResult(RESULT_OK);
-        data.clear(); //clear keyStatsSingleArray
-        save_to_file save=new save_to_file();
-        saveInFile(data); //clear statistics screen
-        //save.saveInFile(data);
+        data.clear(); //clear keyStatsArray
+        save.saveInFile(this,data); //save empty keyStatsArray in file
         //clear all data
         final globalClass globalVar=(globalClass) getApplicationContext();
         globalVar.clear();
@@ -60,16 +36,18 @@ public class statsActivity extends MainActivity {
 
     public void email(View view) {
         // http://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my-android-application
+        //Jeremy Logan
         // 2015/09/30
+
+        //load message
         StringBuffer mailBody=new StringBuffer();
         for (int i=0;i<data.size();i++) {
-            mailBody.append(data.get(i).getData()+"\n");
+            mailBody.append(data.ArrayAt(i).getData()+"\n");
         }
 
+        //send email
         Intent intent = new Intent(Intent.ACTION_SEND, Uri.parse("mailto: "));
-        String[] re={""};
         intent.setType("message/rfc822");
-        intent.putExtra(Intent.EXTRA_EMAIL,re);
         intent.putExtra(Intent.EXTRA_SUBJECT, "reflex results");
         intent.putExtra(Intent.EXTRA_TEXT, mailBody.toString());
         try
@@ -86,40 +64,15 @@ public class statsActivity extends MainActivity {
     protected void onStart() {
         //from lonelyTwitter onStart()
         super.onStart();
-        if(data.getS()==null) {
-            data=new keyStatsSingleArray();
+        if(data.getArray()==null) {
+            data=new keyStatsArray();
         }
-        data=loadFromFile();
+        data=save.loadFromFile(this, data);
         //StatListView=(ListView) findViewById(R.id.StatListView);
-        adapter = new MyAdapter(this, R.layout.stat_list, data.getS());
+        adapter = new MyAdapter(this, R.layout.stat_list, data.getArray());
         StatListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }
-
-    protected keyStatsSingleArray loadFromFile() {
-        keyStatsSingleArray data=null;
-        try {
-
-            FileInputStream fis = openFileInput(FILENAME);
-            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-            Gson gson=new Gson();
-            //https://sites.google.com/site/gson/gson-user-guide sept27,2015
-            Type arrayListType=new TypeToken<keyStatsSingleArray>() {}.getType();
-            data=gson.fromJson(in,arrayListType);
-            //wrap[] arr=gson.fromJson(in, wrap[].class);
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            //throw new RuntimeException(e);
-            //key=new ArrayList<keyStatsSingle>();
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            //throw new RuntimeException(e);
-            e.printStackTrace();
-        }
-        return data;
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

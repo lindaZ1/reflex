@@ -7,17 +7,12 @@ import java.util.Collection;
 /**
  * Created by dzhang4 on 9/27/15.
  */
-//single key data of reaction time from user
-public class keyStatsSingle{
-    private String data=null;
+//key data of reaction time and multiplayer counts
+public class keyStats {
+    private String data;
 
-    public keyStatsSingle(String data) {
+    public keyStats(String data) {
         this.data=data;
-    }
-
-    public void sStat(String data) {
-        this.data=data;
-        //return data;
     }
 
     public String getData() {

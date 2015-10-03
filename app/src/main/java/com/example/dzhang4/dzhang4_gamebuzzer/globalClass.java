@@ -1,6 +1,7 @@
 package com.example.dzhang4.dzhang4_gamebuzzer;
 
 import android.app.Application;
+import android.content.Context;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -9,17 +10,22 @@ import java.util.ArrayList;
  * Created by dzhang4 on 9/30/15.
  */
 //http://www.codeproject.com/Tips/611985/Global-Variable-in-Android josh-jw
-    /*
-    Source Code and Executable Files can be used in commercial applications;
+/*
+Source Code and Executable Files can be used in commercial applications;
 Source Code and Executable Files can be redistributed; and
 Source Code can be modified to create derivative works.
 No claim of suitability, guarantee, or any warranty whatsoever is provided. The software is provided "as-is".
 The Article(s) accompanying the Work may not be distributed or republished without the Author's consent
-     */
+ */
 //sept30,2015
+
+/*store rTime-arrayList of all reaction times
+ *store multi-player count values
+ *can set, ArrayAt, and clear all values
+ *clear clears all attributes at the same time*/
 public class globalClass extends Application {
     private ArrayList rTime=new ArrayList();
-    private int reacCount;
+    protected int reacCount;
 
     //2player counts
     protected int p12Count;
@@ -34,6 +40,7 @@ public class globalClass extends Application {
     protected int p34Count;
     protected int p44Count;
 
+
     //rTime methods
     public void addTime(long time) {
         rTime.add(time);
@@ -43,9 +50,6 @@ public class globalClass extends Application {
         return this.rTime;
     }
 
-    public int getSize() {
-        return rTime.size();
-    }
 
     //reacCount geter and setter
     public void setreacCount(int count) {
