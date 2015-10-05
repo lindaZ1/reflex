@@ -2,7 +2,7 @@
 This app 
 Youtube video link: https://youtu.be/9velMoTrJEg       
 
-josh-jw: http://www.codeproject.com/Tips/611985/Global-Variable-in-Android josh-jw; sept30,2015
+josh-jw: http://www.codeproject.com/Tips/611985/Global-Variable-in-Android; sept30,2015
 "Source Code and Executable Files can be used in commercial applications;
 Source Code and Executable Files can be redistributed; and
 Source Code can be modified to create derivative works.
